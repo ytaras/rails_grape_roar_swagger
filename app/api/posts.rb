@@ -18,7 +18,5 @@ module Posts
         Post.create!(title: params[:title], body: params[:post_body])
       end
     end
-
-    add_swagger_documentation
   end
 end
