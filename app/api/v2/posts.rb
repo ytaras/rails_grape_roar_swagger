@@ -4,7 +4,17 @@ module V2::Posts
     version 'v2'
     resource :posts do
       get do
-        {all: Post.all}
+        Post.all
+          .represent_with PostCollectionRepresenter
+      end
+
+      desc 'Show a post'
+      params do
+        requires :id, type: Integer, desc: 'Id of a post to load'
+      end
+      get ':id' do
+        Post.find(params[:id])
+          .represent_with(PostRepresenter)
       end
     end
   end
