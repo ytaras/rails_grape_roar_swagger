@@ -1,10 +1,11 @@
-module NewPosts
+module V1::Posts
   class API < Grape::API
     format :json
-    version 'v2'
+    version 'v1'
     resource :posts do
+      desc 'List all posts'
       get do
-        {all: Post.all}
+        Post.all
       end
     end
   end
