@@ -1,4 +1,4 @@
 class API < Grape::API
-  mount Posts::API
-  add_swagger_documentation base_path: '/api'
+  mount V1
+  mount V2
 end
