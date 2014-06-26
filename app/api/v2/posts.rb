@@ -16,6 +16,18 @@ module V2::Posts
         Post.find(params[:id])
           .represent_with(PostRepresenter)
       end
+
+      desc 'Creates a post'
+      params do
+        requires :title, type: String, desc: 'Post title'
+        requires :post_body, type: String, desc: 'Post body'
+      end
+      post do
+        Post.new
+          .represent_with(PostRepresenter)
+          .from_hash(params)
+          .tap(&:save!)
+      end
     end
   end
 end

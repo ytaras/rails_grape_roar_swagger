@@ -3,9 +3,9 @@ module PostRepresenter
   include Roar::Representer::JSON::HAL
 
   property :title
-  property :body
+  property :body, as: :post_body
 
   link :self do
-    "/api/posts/#{represented.id}"
+    "/api/posts/#{id}"
   end
 end
